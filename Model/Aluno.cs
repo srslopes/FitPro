@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,37 +17,65 @@ namespace FitPro
         private float altura;
         private Ficha ultima;
         private List<Ficha> fichas;
-        private Query SQL;
+        public Query SQL;
 
 
         public Aluno()
         {
+            clear();
+        }
+        public Aluno(int ID)
+        {
+            carregar(ID);
+        }
+
+        private void clear()
+        {
             id = -1;
             nome = "";
+            telefone = 0;
             nascimento = DateTime.MinValue;
             fichas = new List<Ficha>();
             SQL = new Query();
         }
 
-        public void carregar(int ID)
+        private void carregar(int ID)
         {
-            List<Dictionary<string, object>> query = SQL.Read("aluno");
+            List<Dictionary<string, object>> dados = SQL.ReadWhere("aluno", "ID="+ID);
         }
         public void salvar()
         {
             if(id<0)
             {
-               //id = SQL.Insert("aluno");
+                List<(string column, object value)> dados = new List<(string column, object value)>
+                {
+                    ("nome", nome),
+                    ("telefone", telefone),
+                    ("data_nascimento", nascimento),
+                    ("altura", altura),
+                    ("id_ultima_ficha", ultima.getId()),
+                    ("ids_fichas", list2string(fichas))
+                };
+                SQL.Insert("aluno", dados);
             }
             else
             {
-                //List<Dictionary<string, object>> query = new List<Dictionary<string, object>>();
-                //SQL.Update("aluno", query , "ID=" +id);
+                List<(string column, object value)> dados = new List<(string column, object value)>
+                {
+                    ("nome", nome),
+                    ("telefone", telefone),
+                    ("data_nascimento", nascimento),
+                    ("altura", altura),
+                    ("id_ultima_ficha", ultima.getId()),
+                    ("ids_fichas", list2string(fichas))
+                };
+                SQL.Update("aluno", dados, $"ID = {id}");
             }
         }
         public void delete()
         {
-            if (id != -1) SQL.Delete("aluno", "ID="+id);
+            if (id != -1) SQL.Delete("aluno", $"ID={id}");
+            clear();
         }
 
         public int getId()
@@ -106,6 +135,17 @@ namespace FitPro
         public List<Ficha> getFichas()
         {
             return fichas;
+        }
+
+        private string list2string(List<Ficha> Lista)
+        {
+            string str = "";
+            return str;
+        }
+        private List<Ficha> string2list(string str)
+        {
+            List<Ficha> Lista = new List<Ficha>();
+            return Lista;
         }
 
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,15 @@ namespace FitPro
 
         public Ficha()
         {
+            clear();
+        }
+        public Ficha(int ID)
+        {
+            carregar(ID);
+        }
+
+        private void clear()
+        {
             id = -1;
             data = DateTime.Today;
             peso = 0;
@@ -36,26 +46,49 @@ namespace FitPro
             SQL = new Query();
         }
 
-        public void carregar(int ID)
+        private void carregar(int ID)
         {
-            List<Dictionary<string, object>> query = SQL.Read("ficha");
+            List<Dictionary<string, object>> query = SQL.ReadWhere("ficha", "ID=" +ID);
         }
         public void salvar()
         {
             if (id < 0)
             {
-                //id = SQL.Insert("ficha");
+                List<(string column, object value)> dados = new List<(string column, object value)>
+                {
+                    ("data", data),
+                    ("peso", peso),
+                    ("medida_barriga", cintura),
+                    ("medida_peito", peito),
+                    ("medida_braco_direito", bracoR),
+                    ("medida_braco_esquerdo", bracoL),
+                    ("medida_perna_direito", pernaR),
+                    ("medida_perna_esquerdo", pernaL),
+                    ("comentarios", comentarios)
+                };
+                SQL.Insert("ficha", dados);
             }
             else
             {
-                //List<Dictionary<string, object>> query = new List<Dictionary<string, object>>();
-                //SQL.Update("ficha", query, "ID=" +id);
+                List<(string column, object value)> dados = new List<(string column, object value)>
+                {
+                    ("data", data),
+                    ("peso", peso),
+                    ("medida_barriga", cintura),
+                    ("medida_peito", peito),
+                    ("medida_braco_direito", bracoR),
+                    ("medida_braco_esquerdo", bracoL),
+                    ("medida_perna_direito", pernaR),
+                    ("medida_perna_esquerdo", pernaL),
+                    ("comentarios", comentarios)
+                };
+                SQL.Update("ficha", dados, $"ID = {id}");
             }
         }
         public void delete()
         {
-            if(id!=-1) SQL.Delete("ficha", "ID=" +id);
-            this.Dispose();
+            if(id!=-1) SQL.Delete("ficha", $"ID={id}");
+            clear();
         }
 
         public int getId()
