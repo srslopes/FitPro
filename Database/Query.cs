@@ -1,13 +1,11 @@
 ﻿using MySql.Data.MySqlClient;
-using System;
-using System.Windows;
 using BCrypt.Net;
-using System.Windows.Documents;
-using NotePerson.Controller;
 using System.Collections.Generic;
 using System.Data;
+using System.Windows;
+using System;
 
-namespace NotePerson.Database
+namespace FitPro.Database
 {
     public class Query
     {

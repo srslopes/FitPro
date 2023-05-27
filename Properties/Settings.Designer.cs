@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NotePerson.Properties
+namespace FitPro.Properties
 {
 
 
