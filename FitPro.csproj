@@ -106,6 +106,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Model\Aluno.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -113,6 +114,7 @@
     <Compile Include="Controller\UsuarioController.cs" />
     <Compile Include="Database\Conexao.cs" />
     <Compile Include="Database\Query.cs" />
+    <Compile Include="Model\Ficha.cs" />
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
