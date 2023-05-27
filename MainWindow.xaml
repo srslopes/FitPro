@@ -1,30 +1,22 @@
-﻿<Window x:Class="NotePerson.MainWindow"
+﻿<Window x:Class="FitPro.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:NotePerson"
+        xmlns:local="clr-namespace:FitPro"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Height="720" Width="1280" WindowStartupLocation="CenterScreen" Background="Transparent"
+        AllowsTransparency="True" WindowStyle="None">
     <Grid>
-        <TextBox x:Name="CampoNome" HorizontalAlignment="Left" Margin="20,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="CampoEmail" HorizontalAlignment="Left" Margin="20,163,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="CampoSenha" HorizontalAlignment="Left" Margin="20,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
-        <Button x:Name="BotaoCadastrar" Content="Cadastrar" HorizontalAlignment="Left" Margin="54,366,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.076,-0.248" Width="120" Click="BotaoCadastrar_Click"/>
-        <ListBox x:Name="ListaUsuarios" Margin="300,68,314,189">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Nome}" />
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        <Label Content="Nome" HorizontalAlignment="Left" Margin="20,97,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.461,0.262"/>
-        <Label Content="E-mail" HorizontalAlignment="Left" Margin="20,143,0,0" VerticalAlignment="Top"/>
-        <Label Content="Senha" HorizontalAlignment="Left" Margin="16,184,0,0" VerticalAlignment="Top"/>
-        <Label Content="Lista com todos usuarios" HorizontalAlignment="Left" Margin="300,37,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.188,-1.183"/>
-        <Label Content="ID do usuario para deletar" HorizontalAlignment="Left" Margin="26,42,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="CampoDeletar" HorizontalAlignment="Left" Margin="26,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148"/>
-        <Button Content="Deletar" HorizontalAlignment="Left" Margin="212,366,0,0" VerticalAlignment="Top" Width="148" Click="Button_Click"/>
-        <Button Content="Atualizar" HorizontalAlignment="Left" Margin="401,366,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.2,-0.001" Width="129" Click="Button_Click_1"/>
+        <Border Background="#E7E7E7" CornerRadius="25"></Border>
+        <Border Background="#2f6a87" Height="65" VerticalAlignment="Top" CornerRadius="25 25 0 0">
+            <Grid>
+                <Label Content="FITPRO" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,0,0,0" FontSize="24" Foreground="White" FontWeight="SemiBold" FontFamily="Poppins" />
+                <Button x:Name="BtnEntrar" Content="ENTRAR" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,30,0" FontSize="14" Foreground="White" FontWeight="SemiBold" FontFamily="Poppins" Background="Transparent" BorderBrush="Transparent" Click="BtnEntrar_Click"/>
+                <Button x:Name="BtnAlunos" Content="ALUNOS" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,100,0" FontSize="14" Foreground="White" FontWeight="SemiBold" FontFamily="Poppins" Background="Transparent" BorderBrush="Transparent"/>
+            </Grid>
+        </Border>
+        <WrapPanel x:Name="DashboardContent" VerticalAlignment="Center" HorizontalAlignment="Left"></WrapPanel>
+        <Border Background="#2f6a87" Height="65" VerticalAlignment="Bottom" CornerRadius="0 0 25 25"></Border>
     </Grid>
 </Window>

@@ -1,9 +1,9 @@
 ﻿using MySql.Data.MySqlClient;
-using System;
 using System.Data;
 using System.Windows;
+using System;
 
-namespace NotePerson.Database
+namespace FitPro.Database
 {
     public class Conexao
     {
