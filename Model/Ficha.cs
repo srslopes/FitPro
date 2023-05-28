@@ -77,6 +77,7 @@ namespace FitPro
                     ("comentarios", comentarios)
                 };
                 SQL.Insert("ficha", dados);
+                id = ultimoId();
             }
             else
             {
@@ -99,6 +100,17 @@ namespace FitPro
         {
             if(id!=-1) SQL.Delete("ficha", $"ID={id}");
             clear();
+        }
+
+        private int ultimoId()
+        {
+            int maior = 0;
+            List<Dictionary<string, object>> fichas = SQL.Read("ficha");
+            for (int i = 0; i < fichas.Count; i++)
+            {
+                if (int.Parse(fichas[i]["ID"].ToString()) > maior) maior = int.Parse(fichas[i]["ID"].ToString());
+            }
+            return maior;
         }
 
         public int getId()

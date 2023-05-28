@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FitPro.Database;
+using MySqlX.XDevAPI;
 
 namespace FitPro
 {
@@ -65,6 +66,7 @@ namespace FitPro
                     ("ids_fichas", list2string(fichas))
                 };
                 SQL.Insert("aluno", dados);
+                id = ultimoId();
             }
             else
             {
@@ -77,13 +79,24 @@ namespace FitPro
                     ("id_ultima_ficha", ultima),
                     ("ids_fichas", list2string(fichas))
                 };
-                SQL.Update("aluno", dados, $"ID = {id}");
+                SQL.Update("aluno", dados, $"ID={id}");
             }
         }
         public void delete()
         {
             if (id != -1) SQL.Delete("aluno", $"ID={id}");
             clear();
+        }
+
+        private int ultimoId()
+        {
+            int maior = 0;
+            List<Dictionary<string, object>> alunos = SQL.Read("aluno");
+            for(int i = 0; i<alunos.Count; i++)
+            {
+                if (int.Parse(alunos[i]["ID"].ToString()) > maior) maior = int.Parse(alunos[i]["ID"].ToString());
+            }
+            return maior;
         }
 
         public int getId()
