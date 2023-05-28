@@ -48,7 +48,17 @@ namespace FitPro
 
         private void carregar(int ID)
         {
-            List<Dictionary<string, object>> query = SQL.ReadWhere("ficha", "ID=" +ID);
+            List<Dictionary<string, object>> dados = SQL.ReadWhere("ficha", $"ID={ID}");
+            id = int.Parse(dados.FirstOrDefault()["ID"].ToString());
+            data = DateTime.Parse(dados.FirstOrDefault()["data"].ToString());
+            peso = float.Parse(dados.FirstOrDefault()["peso"].ToString());
+            peito = float.Parse(dados.FirstOrDefault()["medida_peito"].ToString());
+            cintura = float.Parse(dados.FirstOrDefault()["medida_barriga"].ToString());
+            bracoL = float.Parse(dados.FirstOrDefault()["medida_braco_esquerdo"].ToString());
+            bracoR = float.Parse(dados.FirstOrDefault()["medida_braco_direito"].ToString());
+            pernaL = float.Parse(dados.FirstOrDefault()["medida_perna_esquerdo"].ToString());
+            pernaR = float.Parse(dados.FirstOrDefault()["medida_perna_direito"].ToString());
+            comentarios = dados.FirstOrDefault()["comentarios"].ToString();
         }
         public void salvar()
         {
@@ -82,7 +92,7 @@ namespace FitPro
                     ("medida_perna_esquerdo", pernaL),
                     ("comentarios", comentarios)
                 };
-                SQL.Update("ficha", dados, $"ID = {id}");
+                SQL.Update("ficha", dados, $"ID={id}");
             }
         }
         public void delete()

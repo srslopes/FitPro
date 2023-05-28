@@ -15,8 +15,8 @@ namespace FitPro
         private int telefone;
         private DateTime nascimento;
         private float altura;
-        private Ficha ultima;
-        private List<Ficha> fichas;
+        private int ultima;
+        private List<int> fichas;
         public Query SQL;
 
 
@@ -35,13 +35,21 @@ namespace FitPro
             nome = "";
             telefone = 0;
             nascimento = DateTime.MinValue;
-            fichas = new List<Ficha>();
+            ultima = -1;
+            fichas = new List<int>();
             SQL = new Query();
         }
 
         private void carregar(int ID)
         {
-            List<Dictionary<string, object>> dados = SQL.ReadWhere("aluno", "ID="+ID);
+            List<Dictionary<string, object>> dados = SQL.ReadWhere("aluno", $"ID={ID}");
+            id = int.Parse(dados.FirstOrDefault()["ID"].ToString());
+            nome = dados.FirstOrDefault()["nome"].ToString();
+            telefone = int.Parse(dados.FirstOrDefault()["telefone"].ToString());
+            nascimento = DateTime.Parse(dados.FirstOrDefault()["data_nascimento"].ToString());
+            altura = float.Parse(dados.FirstOrDefault()["altura"].ToString());
+            ultima = int.Parse(dados.FirstOrDefault()["id_ultima_ficha"].ToString());
+            fichas = string2list(dados.FirstOrDefault()["ids_fichas"].ToString());
         }
         public void salvar()
         {
@@ -53,7 +61,7 @@ namespace FitPro
                     ("telefone", telefone),
                     ("data_nascimento", nascimento),
                     ("altura", altura),
-                    ("id_ultima_ficha", ultima.getId()),
+                    ("id_ultima_ficha", ultima),
                     ("ids_fichas", list2string(fichas))
                 };
                 SQL.Insert("aluno", dados);
@@ -66,7 +74,7 @@ namespace FitPro
                     ("telefone", telefone),
                     ("data_nascimento", nascimento),
                     ("altura", altura),
-                    ("id_ultima_ficha", ultima.getId()),
+                    ("id_ultima_ficha", ultima),
                     ("ids_fichas", list2string(fichas))
                 };
                 SQL.Update("aluno", dados, $"ID = {id}");
@@ -119,32 +127,57 @@ namespace FitPro
             return altura;
         }
 
-        public void setUltima(Ficha Ultima)
+        public void setUltima(int Ultima)
         {
             ultima = Ultima;
         }
-        public Ficha getUltima()
+        public int getUltima()
         {
             return ultima;
         }
 
-        public void setFichas(List<Ficha> Fichas)
+        public void setFichas(List<int> Fichas)
         {
             fichas = Fichas;
         }
-        public List<Ficha> getFichas()
+        public List<int> getFichas()
         {
             return fichas;
         }
-
-        private string list2string(List<Ficha> Lista)
+        public void addFicha(int ID)
+        {
+            if(!fichas.Contains(ID)) fichas.Add(ID);
+        }
+        public void removeFicha(int ID)
+        {
+            if(fichas.Contains(ID)) fichas.Remove(ID);
+        }
+        private string list2string(List<int> Lista)
         {
             string str = "";
+            if(Lista.Count==0)return str;
+            if(Lista.Count==1)return Lista[0].ToString();
+            for (int i = 0; i < Lista.Count; i++)
+            {
+                str += Lista[i].ToString();
+                if(i!= Lista.Count-1) str += ".";
+            }
             return str;
         }
-        private List<Ficha> string2list(string str)
+        private List<int> string2list(string str)
         {
-            List<Ficha> Lista = new List<Ficha>();
+            List<int> Lista = new List<int>();
+            if(str=="") return Lista;
+            if(!str.Contains('.'))
+            {
+                Lista.Add(int.Parse(str));
+                return Lista;
+            }
+            List<string> strings = str.Split('.').ToList<string>();            
+            for (int i = 0; i < strings.Count; i++)
+            {
+                Lista.Add(int.Parse(strings[i]));
+            }
             return Lista;
         }
 
