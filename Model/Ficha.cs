@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +11,7 @@ namespace FitPro
     internal class Ficha
     {
         private int id;
+        private int idAluno;
         private DateTime data;
         private float peso;
         private float peito;
@@ -35,6 +36,7 @@ namespace FitPro
         {
             id = -1;
             data = DateTime.Today;
+            idAluno = -1;
             peso = 0;
             peito = 0;
             cintura = 0;
@@ -51,6 +53,7 @@ namespace FitPro
             List<Dictionary<string, object>> dados = SQL.ReadWhere("ficha", $"ID={ID}");
             id = int.Parse(dados.FirstOrDefault()["ID"].ToString());
             data = DateTime.Parse(dados.FirstOrDefault()["data"].ToString());
+            idAluno = int.Parse(dados.FirstOrDefault()["id_aluno"].ToString());
             peso = float.Parse(dados.FirstOrDefault()["peso"].ToString());
             peito = float.Parse(dados.FirstOrDefault()["medida_peito"].ToString());
             cintura = float.Parse(dados.FirstOrDefault()["medida_barriga"].ToString());
@@ -67,6 +70,7 @@ namespace FitPro
                 List<(string column, object value)> dados = new List<(string column, object value)>
                 {
                     ("data", data),
+                    ("id_aluno", idAluno),
                     ("peso", peso),
                     ("medida_barriga", cintura),
                     ("medida_peito", peito),
@@ -99,6 +103,17 @@ namespace FitPro
         public void delete()
         {
             if(id!=-1) SQL.Delete("ficha", $"ID={id}");
+            if (idAluno != -1)
+            {
+                Aluno aluno = new Aluno();
+                aluno.removeFicha(id);
+                aluno = null;
+            }
+            clear();
+        }
+        public void delete(bool x)
+        {
+            if (id != -1) SQL.Delete("ficha", $"ID={id}");            
             clear();
         }
 
