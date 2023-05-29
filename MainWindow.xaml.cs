@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FitPro.Database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,12 +21,26 @@ namespace FitPro
         public MainWindow()
         {
             InitializeComponent();
+            CreateTablesSQL();
         }
 
         private void BtnEntrar_Click(object sender, RoutedEventArgs e)
         {
             Login login = new Login();
             login.Show();
+        }
+
+        private void CreateTablesSQL()
+        {
+            try
+            {
+                Conexao conexao = new Conexao();
+                Console.WriteLine("Conexão com o banco de dados estabelecida com sucesso.");
+                conexao.CloseConnection();
+            }catch(Exception ex)
+            {
+                Console.WriteLine("Erro ao estabelecer a conexão: " + ex.Message);
+            }
         }
     }
 }
