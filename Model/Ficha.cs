@@ -107,6 +107,7 @@ namespace FitPro
             {
                 Aluno aluno = new Aluno();
                 aluno.removeFicha(id);
+                aluno.salvar();
                 aluno = null;
             }
             clear();
