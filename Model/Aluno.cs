@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,10 +51,12 @@ namespace FitPro
             altura = float.Parse(dados.FirstOrDefault()["altura"].ToString());
             ultima = int.Parse(dados.FirstOrDefault()["id_ultima_ficha"].ToString());
             fichas = string2list(dados.FirstOrDefault()["ids_fichas"].ToString());
+            fichas.Sort();
         }
         public void salvar()
         {
-            if(id<0)
+            fichas.Sort();
+            if (id<0)
             {
                 List<(string column, object value)> dados = new List<(string column, object value)>
                 {
@@ -84,7 +86,16 @@ namespace FitPro
         }
         public void delete()
         {
-            if (id != -1) SQL.Delete("aluno", $"ID={id}");
+            if (id != -1)
+            {
+                SQL.Delete("aluno", $"ID={id}");
+                for (int i = 0; i< fichas.Count; i++)
+                {
+                    Ficha ficha = new Ficha(fichas[i]);
+                    ficha.delete(true);
+                    ficha = null;
+                }
+            }
             clear();
         }
 
@@ -152,18 +163,36 @@ namespace FitPro
         public void setFichas(List<int> Fichas)
         {
             fichas = Fichas;
+            fichas.Sort();
         }
         public List<int> getFichas()
         {
+            fichas.Sort();
             return fichas;
         }
         public void addFicha(int ID)
         {
             if(!fichas.Contains(ID)) fichas.Add(ID);
+            fichas.Sort();
+            ultima = ID;
         }
         public void removeFicha(int ID)
         {
-            if(fichas.Contains(ID)) fichas.Remove(ID);
+            if (fichas.Contains(ID))
+            {
+                fichas.Sort();
+                if (ID == ultima)
+                {
+                    if (fichas.Count == 0)
+                    {
+                        ultima = -1;
+                        return;
+                    }
+                    ultima = fichas[fichas.Count - 1];
+                }
+                fichas.Remove(ID);
+            }
+            
         }
         private string list2string(List<int> Lista)
         {
