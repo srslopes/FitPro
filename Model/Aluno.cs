@@ -49,8 +49,8 @@ namespace FitPro
             telefone = int.Parse(dados.FirstOrDefault()["telefone"].ToString());
             nascimento = DateTime.Parse(dados.FirstOrDefault()["data_nascimento"].ToString());
             altura = float.Parse(dados.FirstOrDefault()["altura"].ToString());
-            ultima = int.Parse(dados.FirstOrDefault()["id_ultima_ficha"].ToString());
-            fichas = string2list(dados.FirstOrDefault()["ids_fichas"].ToString());
+            ultima = int.Parse(dados.FirstOrDefault()["ID_ultima_ficha"].ToString());
+            fichas = string2list(dados.FirstOrDefault()["IDs_fichas"].ToString());
             fichas.Sort();
         }
         public void salvar()
@@ -64,8 +64,8 @@ namespace FitPro
                     ("telefone", telefone),
                     ("data_nascimento", nascimento),
                     ("altura", altura),
-                    ("id_ultima_ficha", ultima),
-                    ("ids_fichas", list2string(fichas))
+                    ("ID_ultima_ficha", ultima),
+                    ("IDs_fichas", list2string(fichas))
                 };
                 SQL.Insert("aluno", dados);
                 id = ultimoId();

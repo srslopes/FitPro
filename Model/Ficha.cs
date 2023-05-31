@@ -23,9 +23,10 @@ namespace FitPro
         private string comentarios;
         private Query SQL;
 
-        public Ficha()
+        public Ficha(Aluno aluno)
         {
             clear();
+            idAluno = aluno.getId();
         }
         public Ficha(int ID)
         {
@@ -53,7 +54,7 @@ namespace FitPro
             List<Dictionary<string, object>> dados = SQL.ReadWhere("ficha", $"ID={ID}");
             id = int.Parse(dados.FirstOrDefault()["ID"].ToString());
             data = DateTime.Parse(dados.FirstOrDefault()["data"].ToString());
-            idAluno = int.Parse(dados.FirstOrDefault()["id_aluno"].ToString());
+            idAluno = int.Parse(dados.FirstOrDefault()["ID_aluno"].ToString());
             peso = float.Parse(dados.FirstOrDefault()["peso"].ToString());
             peito = float.Parse(dados.FirstOrDefault()["medida_peito"].ToString());
             cintura = float.Parse(dados.FirstOrDefault()["medida_barriga"].ToString());
@@ -132,6 +133,11 @@ namespace FitPro
         public int getId()
         {
             return id;
+        }
+
+        public int getIdAluno()
+        {
+            return idAluno;
         }
 
         public DateTime getData()

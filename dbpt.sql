@@ -28,12 +28,14 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `aluno` (
-  `ID` int(11) NOT NULL,
-  `nome` varchar(128) NOT NULL,
-  `data_nascimento` date NOT NULL,
-  `altura` float NOT NULL,
-  `id_ultima_ficha` int(11) NOT NULL,
-  `ids_fichas` int(11) NOT NULL
+    `ID` INT NOT NULL AUTO_INCREMENT,
+	`nome` VARCHAR(255) NOT NULL,
+	`telefone` INT,
+	`data_nascimento` DATE,
+	`altura` FLOAT,
+	`ID_ultima_ficha` INT,
+	`IDs_fichas` VARCHAR(100),
+	PRIMARY KEY (ID)  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -43,15 +45,18 @@ CREATE TABLE `aluno` (
 --
 
 CREATE TABLE `ficha` (
-  `ID` int(11) NOT NULL,
-  `data` date NOT NULL,
-  `peso` float NOT NULL,
-  `medida_barriga` float NOT NULL,
-  `medida_peito` float NOT NULL,
-  `medida_braco_direito` float NOT NULL,
-  `medida_braco_esquerdo` float NOT NULL,
-  `medida_perna` float NOT NULL,
-  `comentarios` varchar(128) NOT NULL
+	`ID` INT NOT NULL AUTO_INCREMENT,
+	`ID_aluno` INT,
+	`data` DATE,
+	`peso` FLOAT,
+	`medida_barriga` FLOAT,
+	`medida_peito` FLOAT,
+	`medida_braco_direito` FLOAT,
+	`medida_braco_esquerdo` FLOAT,
+	`medida_perna_direita` FLOAT,
+	`medida_perna_esquerda` FLOAT,
+	`comentarios` VARCHAR(255) NOT NULL,
+	PRIMARY KEY (ID)                                
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -61,19 +66,17 @@ CREATE TABLE `ficha` (
 --
 
 CREATE TABLE `usuario` (
-  `ID` int(11) NOT NULL,
-  `nome` varchar(128) NOT NULL,
-  `email` varchar(128) NOT NULL,
-  `senha` varchar(30) NOT NULL
+	`ID` INT NOT NULL AUTO_INCREMENT,
+	`nome` VARCHAR(255) NOT NULL,
+	`email` VARCHAR(255) NOT NULL,
+	`senha` VARCHAR(255) NOT NULL,
+	PRIMARY KEY (ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `usuario`
 --
 
-INSERT INTO `usuario` (`ID`, `nome`, `email`, `senha`) VALUES
-(2, 'vinicius', 'vinicius', '$2a$10$khUnRXJzxCRpsQEou3t2F.A'),
-(3, 'testeupdate', 'testeupdate', '$2a$10$.Ti1UeDHbOLghHvBD9wwvej');
 
 --
 -- Índices para tabelas despejadas
