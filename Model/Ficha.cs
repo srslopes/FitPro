@@ -101,7 +101,7 @@ namespace FitPro
                 SQL.Update("ficha", dados, $"ID={id}");
             }
         }
-        public void delete()
+        public void deletar()
         {
             if(id!=-1) SQL.Delete("ficha", $"ID={id}");
             if (idAluno != -1)

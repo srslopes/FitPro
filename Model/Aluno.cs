@@ -84,7 +84,7 @@ namespace FitPro
                 SQL.Update("aluno", dados, $"ID={id}");
             }
         }
-        public void delete()
+        public void deletar()
         {
             if (id != -1)
             {

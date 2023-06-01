@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using FitPro.Views;
 using FitPro.Model;
 using static System.Net.Mime.MediaTypeNames;
+using FitPro.Controller;
 
 namespace FitPro.Views
 {
@@ -24,21 +25,18 @@ namespace FitPro.Views
     {
         private Aluno aluno;
         private Ficha ficha;
-        private int idFichaSelec;
 
         public TesteClasses()
         {
             InitializeComponent();
             aluno = new Aluno();
             ficha = new Ficha(aluno);
-            carregarAluno();
-            carregarFicha();
-        }
+            limparAluno();
+            limparFicha();
 
-        private void carregarAluno()
+        private void limparAluno()
         {
             aluno = new Aluno();
-            idFichaSelec = -1;
             idAluno.Text = "ID";
             campoId.Text = "";
             campoNome.Text = "";
@@ -55,9 +53,10 @@ namespace FitPro.Views
             campoNome.Text = aluno.getNome().ToString();
             campoTelefone.Text = aluno.getTelefone().ToString();
             campoAltura.Text = aluno.getAltura().ToString();
-            for (int i=0; i< aluno.getFichas().Count; i++) campoFichas.Items.Add(aluno.getFichas()[i]);            
+            for (int i=0; i< aluno.getFichas().Count; i++) campoFichas.Items.Add(aluno.getFichas()[i]);
+            limparFicha();
         }
-        private void carregarFicha()
+        private void limparFicha()
         {
             ficha = new Ficha(aluno);
             idFicha.Text = "ID";
@@ -96,7 +95,6 @@ namespace FitPro.Views
             aluno.setAltura(float.Parse(campoAltura.Text));
             aluno.salvar();
             carregarAluno(aluno.getId());
-            carregarFicha();
         }
 
         private void bCarrFichas_Click(object sender, RoutedEventArgs e)
@@ -109,7 +107,6 @@ namespace FitPro.Views
 
         private void bCarrAluno_Click(object sender, RoutedEventArgs e)
         {
-            carregarFicha();
             carregarAluno(int.Parse(campoId.Text));
         }
 
@@ -124,8 +121,8 @@ namespace FitPro.Views
             ficha.setPernaR(float.Parse(campoPernaR.Text));
             ficha.setComentarios(campoComentarios.Text);
             ficha.salvar();
-            carregarFicha(ficha.getId());
             carregarAluno(aluno.getId());
+            carregarFicha(ficha.getId());
         }
     }
 }
