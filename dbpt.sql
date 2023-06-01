@@ -31,9 +31,8 @@ CREATE TABLE `aluno` (
     `ID` INT NOT NULL AUTO_INCREMENT,
 	`nome` VARCHAR(255) NOT NULL,
 	`telefone` INT,
-	`data_nascimento` DATE,
+	`data_nascimento` VARCHAR(255) NOT NULL,
 	`altura` FLOAT,
-	`ID_ultima_ficha` INT,
 	`IDs_fichas` VARCHAR(100),
 	PRIMARY KEY (ID)  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -47,7 +46,7 @@ CREATE TABLE `aluno` (
 CREATE TABLE `ficha` (
 	`ID` INT NOT NULL AUTO_INCREMENT,
 	`ID_aluno` INT,
-	`data` DATE,
+	`data` VARCHAR(255) NOT NULL,
 	`peso` FLOAT,
 	`medida_barriga` FLOAT,
 	`medida_peito` FLOAT,
@@ -85,20 +84,17 @@ CREATE TABLE `usuario` (
 --
 -- Índices de tabela `aluno`
 --
-ALTER TABLE `aluno`
-  ADD PRIMARY KEY (`ID`);
+
 
 --
 -- Índices de tabela `ficha`
 --
-ALTER TABLE `ficha`
-  ADD PRIMARY KEY (`ID`);
+
 
 --
 -- Índices de tabela `usuario`
 --
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`ID`);
+
 
 --
 -- AUTO_INCREMENT para tabelas despejadas

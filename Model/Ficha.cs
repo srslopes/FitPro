@@ -28,12 +28,13 @@ namespace FitPro
             clear();
             idAluno = aluno.getId();
         }
-        public Ficha(int ID)
+
+        public Ficha()
         {
-            carregar(ID);
+            clear();
         }
 
-        private void clear()
+        public void clear()
         {
             id = -1;
             data = DateTime.Today;
@@ -48,7 +49,7 @@ namespace FitPro
             comentarios = "";
             SQL = new Query();
         }
-
+        /*
         private void carregar(int ID)
         {
             List<Dictionary<string, object>> dados = SQL.ReadWhere("ficha", $"ID={ID}");
@@ -118,8 +119,8 @@ namespace FitPro
             if (id != -1) SQL.Delete("ficha", $"ID={id}");            
             clear();
         }
-
-        private int ultimoId()
+        */
+        public int ultimoId()
         {
             int maior = 0;
             List<Dictionary<string, object>> fichas = SQL.Read("ficha");
@@ -130,14 +131,29 @@ namespace FitPro
             return maior;
         }
 
+        public void setId(int ID)
+        {
+            id = ID;
+        }
+
         public int getId()
         {
             return id;
         }
 
+        public void setIdAluno(int ID)
+        {
+            idAluno = ID;
+        }
+
         public int getIdAluno()
         {
             return idAluno;
+        }
+
+        public void setData(DateTime Data)
+        {
+            data = Data;
         }
 
         public DateTime getData()

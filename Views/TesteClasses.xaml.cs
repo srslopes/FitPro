@@ -33,6 +33,7 @@ namespace FitPro.Views
             ficha = new Ficha(aluno);
             limparAluno();
             limparFicha();
+        }
 
         private void limparAluno()
         {
@@ -48,7 +49,7 @@ namespace FitPro.Views
         }
         private void carregarAluno(int id)
         {
-            aluno = new Aluno(id);
+            aluno = ControleAluno.carregar(id);
             idAluno.Text = "ID: " +aluno.getId().ToString();
             campoNome.Text = aluno.getNome().ToString();
             campoTelefone.Text = aluno.getTelefone().ToString();
@@ -73,7 +74,7 @@ namespace FitPro.Views
         }
         private void carregarFicha(int id)
         {
-            ficha = new Ficha(id);
+            ficha = ControleFicha.carregar(id);
             idFicha.Text = "ID: " +ficha.getId();
             campoIdAluno.Text = "ID Aluno: " +ficha.getId();
             campoDataCriacao.Text = "Criação: " +ficha.getIdAluno();
@@ -93,7 +94,7 @@ namespace FitPro.Views
             aluno.setTelefone(int.Parse(campoTelefone.Text));
             //aluno.setNascimento(DateTime.Parse());
             aluno.setAltura(float.Parse(campoAltura.Text));
-            aluno.salvar();
+            ControleAluno.salvar(aluno);
             carregarAluno(aluno.getId());
         }
 
@@ -120,7 +121,7 @@ namespace FitPro.Views
             ficha.setPernaL(float.Parse(campoPernaL.Text));
             ficha.setPernaR(float.Parse(campoPernaR.Text));
             ficha.setComentarios(campoComentarios.Text);
-            ficha.salvar();
+            ControleFicha.salvar(ficha);
             carregarAluno(aluno.getId());
             carregarFicha(ficha.getId());
         }

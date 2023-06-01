@@ -16,7 +16,6 @@ namespace FitPro
         private int telefone;
         private DateTime nascimento;
         private float altura;
-        private int ultima;
         private List<int> fichas;
         public Query SQL;
 
@@ -25,22 +24,17 @@ namespace FitPro
         {
             clear();
         }
-        public Aluno(int ID)
-        {
-            carregar(ID);
-        }
-
-        private void clear()
+       
+        public void clear()
         {
             id = -1;
             nome = "";
             telefone = 0;
             nascimento = DateTime.MinValue;
-            ultima = -1;
             fichas = new List<int>();
             SQL = new Query();
         }
-
+        /*
         private void carregar(int ID)
         {
             List<Dictionary<string, object>> dados = SQL.ReadWhere("aluno", $"ID={ID}");
@@ -98,8 +92,8 @@ namespace FitPro
             }
             clear();
         }
-
-        private int ultimoId()
+        */
+        public int ultimoId()
         {
             int maior = 0;
             List<Dictionary<string, object>> alunos = SQL.Read("aluno");
@@ -108,6 +102,11 @@ namespace FitPro
                 if (int.Parse(alunos[i]["ID"].ToString()) > maior) maior = int.Parse(alunos[i]["ID"].ToString());
             }
             return maior;
+        }
+
+        public void setId(int ID)
+        {
+            id = ID;
         }
 
         public int getId()
@@ -151,15 +150,6 @@ namespace FitPro
             return altura;
         }
 
-        public void setUltima(int Ultima)
-        {
-            ultima = Ultima;
-        }
-        public int getUltima()
-        {
-            return ultima;
-        }
-
         public void setFichas(List<int> Fichas)
         {
             fichas = Fichas;
@@ -174,27 +164,16 @@ namespace FitPro
         {
             if(!fichas.Contains(ID)) fichas.Add(ID);
             fichas.Sort();
-            ultima = ID;
         }
         public void removeFicha(int ID)
         {
             if (fichas.Contains(ID))
             {
-                fichas.Sort();
-                if (ID == ultima)
-                {
-                    if (fichas.Count == 0)
-                    {
-                        ultima = -1;
-                        return;
-                    }
-                    ultima = fichas[fichas.Count - 1];
-                }
                 fichas.Remove(ID);
             }
             
         }
-        private string list2string(List<int> Lista)
+        public string list2string(List<int> Lista)
         {
             string str = "";
             if(Lista.Count==0)return str;
@@ -206,7 +185,7 @@ namespace FitPro
             }
             return str;
         }
-        private List<int> string2list(string str)
+        public List<int> string2list(string str)
         {
             List<int> Lista = new List<int>();
             if(str=="") return Lista;
