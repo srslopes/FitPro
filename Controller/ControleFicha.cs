@@ -25,7 +25,7 @@ namespace FitPro.Controller
             {
                 if (int.Parse(fichas[i]["ID"].ToString()) == ID) break;
             }
-            if (i == fichas.Count) return null;
+            //if (i == fichas.Count) return null;
             Ficha ficha = new Ficha();
             ficha.setId(int.Parse(fichas[i]["ID"].ToString()));
             ficha.setData(DateTime.Parse(fichas[i]["data"].ToString()));
@@ -35,16 +35,17 @@ namespace FitPro.Controller
             ficha.setCintura(float.Parse(fichas[i]["medida_barriga"].ToString()));
             ficha.setBracoL(float.Parse(fichas[i]["medida_braco_esquerdo"].ToString()));
             ficha.setBracoR(float.Parse(fichas[i]["medida_braco_direito"].ToString()));
-            ficha.setPernaL(float.Parse(fichas[i]["medida_perna_esquerdo"].ToString()));
-            ficha.setPernaR(float.Parse(fichas[i]["medida_perna_direito"].ToString()));
+            ficha.setPernaL(float.Parse(fichas[i]["medida_perna_esquerda"].ToString()));
+            ficha.setPernaR(float.Parse(fichas[i]["medida_perna_direita"].ToString()));
             ficha.setComentarios(fichas[i]["comentarios"].ToString());
             SQL = null;
             return ficha;
         }
 
-        public static void salvar(Ficha ficha)
+        public static void salvar(Ficha ficha, Aluno aluno = null)
         {
             Query SQL = new Query();
+            if (aluno != null) ficha.setIdAluno(aluno.getId());
             List<(string column, object value)> dados = new List<(string column, object value)>
                 {
                     ("data", ficha.getData().ToString()),
@@ -54,14 +55,17 @@ namespace FitPro.Controller
                     ("medida_peito", ficha.getPeito()),
                     ("medida_braco_direito", ficha.getBracoR()),
                     ("medida_braco_esquerdo", ficha.getBracoL()),
-                    ("medida_perna_direito", ficha.getPernaR()),
-                    ("medida_perna_esquerdo", ficha.getPernaL()),
+                    ("medida_perna_direita", ficha.getPernaR()),
+                    ("medida_perna_esquerda", ficha.getPernaL()),
                     ("comentarios", ficha.getComentarios())
                 };
             if (ficha.getId()<0)
             {
-                SQL.Insert("ficha", dados);
+                SQL.Insert("ficha", dados);                
                 ficha.setId(ficha.ultimoId());
+                aluno = ControleAluno.carregar(ficha.getIdAluno());
+                aluno.addFicha(ficha.getId());
+                ControleAluno.salvar(aluno);
             }
             else
             {

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FitPro.Views"
         mc:Ignorable="d"
-        Title="TesteClasses" Height="630" Width="280">
+        Title="TesteClasses" Height="730" Width="290">
     <Grid>
         <StackPanel Orientation="Horizontal">
             <Grid Width="140">
@@ -31,6 +31,9 @@
                 <Button x:Name="bCarrAluno" Content="Carr" Width="30" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="90,330,0,0" Click="bCarrAluno_Click"/>
 
                 <Button x:Name="bSalvarAluno" Content="Salvar" Height="20" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,370,0,0" Click="bSalvarAluno_Click"/>
+
+                <Button x:Name="bLimparAluno" Content="Limpar" Height="20" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,400,0,0" Click="bLimparAluno_Click" />
+                <Button x:Name="bExcluirAluno" Content="Excluir" Height="20" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,430,0,0" Click="bExcluirAluno_Click"/>
             </Grid>
             
             <Grid Width="140">
@@ -65,6 +68,10 @@
                 <TextBox x:Name="campoComentarios" Width="100" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,500,0,0"/>
 
                 <Button x:Name="bSalvarFicha" Content="Salvar" Height="20" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,570,0,0" Click="bSalvarFicha_Click"/>
+
+                <Button x:Name="bLimparFicha" Content="Limpar" Height="20" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,600,0,0" Click="bLimparFicha_Click"/>
+
+                <Button x:Name="bExcluirFicha" Content="Excluir" Height="20" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,630,0,0" Click="bExcluirFicha_Click"/>
             </Grid>
         </StackPanel>        
     </Grid>

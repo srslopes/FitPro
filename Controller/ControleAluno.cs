@@ -68,13 +68,14 @@ namespace FitPro.Controller
         {
             Query SQL = new Query();
             if (aluno.getId() != -1)
-            {
-                SQL.Delete("aluno", $"ID={aluno.getId()}");
-                for (int i = 0; i < aluno.getFichas().Count; i++)
+            {                
+                while (aluno.getFichas().Count>1)
                 {
-                    Ficha ficha = ControleFicha.carregar(aluno.getFichas()[i]); ;
+                    aluno = ControleAluno.carregar(aluno.getId());
+                    Ficha ficha = ControleFicha.carregar(aluno.getFichas()[0]);
                     ControleFicha.deletar(ficha);
                 }
+                SQL.Delete("aluno", $"ID={aluno.getId()}");
             }
             aluno.clear();
         }

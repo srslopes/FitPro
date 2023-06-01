@@ -54,6 +54,7 @@ namespace FitPro.Views
             campoNome.Text = aluno.getNome().ToString();
             campoTelefone.Text = aluno.getTelefone().ToString();
             campoAltura.Text = aluno.getAltura().ToString();
+            campoFichas.Items.Clear();
             for (int i=0; i< aluno.getFichas().Count; i++) campoFichas.Items.Add(aluno.getFichas()[i]);
             limparFicha();
         }
@@ -74,6 +75,7 @@ namespace FitPro.Views
         }
         private void carregarFicha(int id)
         {
+            limparFicha();
             ficha = ControleFicha.carregar(id);
             idFicha.Text = "ID: " +ficha.getId();
             campoIdAluno.Text = "ID Aluno: " +ficha.getId();
@@ -121,9 +123,35 @@ namespace FitPro.Views
             ficha.setPernaL(float.Parse(campoPernaL.Text));
             ficha.setPernaR(float.Parse(campoPernaR.Text));
             ficha.setComentarios(campoComentarios.Text);
-            ControleFicha.salvar(ficha);
+            ControleFicha.salvar(ficha, aluno);
+            int id = ficha.getId();
             carregarAluno(aluno.getId());
-            carregarFicha(ficha.getId());
+            carregarFicha(id);
+        }
+
+        private void bLimparAluno_Click(object sender, RoutedEventArgs e)
+        {
+            limparAluno();
+            limparFicha();
+        }
+
+        private void bExcluirAluno_Click(object sender, RoutedEventArgs e)
+        {
+            ControleAluno.deletar(aluno);
+            limparAluno();
+            limparFicha();
+        }
+
+        private void bLimparFicha_Click(object sender, RoutedEventArgs e)
+        {
+            limparFicha();
+        }
+
+        private void bExcluirFicha_Click(object sender, RoutedEventArgs e)
+        {
+            ControleFicha.deletar(ficha);
+            carregarAluno(aluno.getId());
+            limparFicha();
         }
     }
 }
