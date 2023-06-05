@@ -98,6 +98,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Cadastrar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashboardAlunos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FichaAluno.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -106,6 +118,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Cadastrar.xaml.cs">
+      <DependentUpon>Cadastrar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashboardAlunos.xaml.cs">
+      <DependentUpon>DashboardAlunos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FichaAluno.xaml.cs">
+      <DependentUpon>FichaAluno.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\Aluno.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>

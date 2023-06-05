@@ -44,3 +44,5 @@ C:\Users\vbasi\OneDrive\Área de Trabalho\FitPro\obj\Debug\FitPro.csproj.CoreCom
 C:\Users\vbasi\OneDrive\Área de Trabalho\FitPro\obj\Debug\FitPro.csproj.CopyComplete
 C:\Users\vbasi\OneDrive\Área de Trabalho\FitPro\obj\Debug\FitPro.exe
 C:\Users\vbasi\OneDrive\Área de Trabalho\FitPro\obj\Debug\FitPro.pdb
+C:\Users\vbasi\OneDrive\Área de Trabalho\FitPro\obj\Debug\Views\Cadastrar.g.cs
+C:\Users\vbasi\OneDrive\Área de Trabalho\FitPro\obj\Debug\Views\Cadastrar.baml
