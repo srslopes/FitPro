@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace FitPro
 {
-    /// <summary>
-    /// Lógica interna para Login.xaml
-    /// </summary>
     public partial class Login : Window
     {
         public Login()

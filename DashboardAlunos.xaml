@@ -12,11 +12,11 @@
         <Border Background="#2f6a87" Height="65" VerticalAlignment="Top" CornerRadius="25 25 0 0">
             <Grid>
                 <Label Content="FITPRO" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,0,0,0" FontSize="24" Foreground="White" FontWeight="SemiBold" FontFamily="Poppins" />
-                <Button x:Name="BtnSair" Content="SAIR" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,30,0" FontSize="14" Foreground="White" FontWeight="SemiBold" FontFamily="Poppins" Background="Transparent" BorderBrush="Transparent" Click="BtnEntrar_Click"/>
+                <Button x:Name="BtnSair" Content="SAIR" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,30,0" FontSize="14" Foreground="White" FontWeight="SemiBold" FontFamily="Poppins" Background="Transparent" BorderBrush="Transparent"/>
             </Grid>
         </Border>
         <WrapPanel x:Name="DashboardContent" VerticalAlignment="Center" HorizontalAlignment="Center" Height="590" Width="1280">
-            <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}"/>
+            <DataGrid x:Name="UsuariosGrid" Height="580" Width="1270" AutoGenerateColumns="False" />
         </WrapPanel>
         <Border Background="#2f6a87" Height="65" VerticalAlignment="Bottom" CornerRadius="0 0 25 25"></Border>
     </Grid>
