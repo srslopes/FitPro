@@ -98,6 +98,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controller\ControleAluno.cs" />
+    <Compile Include="Controller\ControleFicha.cs" />
     <Compile Include="Views\TelaAluno.xaml.cs">
       <DependentUpon>TelaAluno.xaml</DependentUpon>
     </Compile>
