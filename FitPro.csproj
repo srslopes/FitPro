@@ -103,6 +103,9 @@
     <Compile Include="Views\TelaAluno.xaml.cs">
       <DependentUpon>TelaAluno.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\TesteClasses.xaml.cs">
+      <DependentUpon>TesteClasses.xaml</DependentUpon>
+    </Compile>
     <Page Include="Cadastrar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -149,6 +152,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\TelaAluno.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TesteClasses.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

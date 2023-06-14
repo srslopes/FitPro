@@ -16,7 +16,12 @@
             </Grid>
         </Border>
         <WrapPanel x:Name="DashboardContent" VerticalAlignment="Center" HorizontalAlignment="Center" Height="590" Width="1280">
-            <DataGrid x:Name="UsuariosGrid" Height="580" Width="1270" AutoGenerateColumns="False" />
+            <DataGrid x:Name="UsuariosGrid" Height="580" Width="1270" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nome" Binding="{Binding Nome}" />
+                    <DataGridTextColumn Header="Idade" Binding="{Binding Idade}" />
+                </DataGrid.Columns>
+            </DataGrid>
         </WrapPanel>
         <Border Background="#2f6a87" Height="65" VerticalAlignment="Bottom" CornerRadius="0 0 25 25"></Border>
     </Grid>

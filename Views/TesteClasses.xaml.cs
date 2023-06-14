@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FitPro.Controller;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,18 +12,12 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using FitPro.Views;
-using FitPro.Model;
-using static System.Net.Mime.MediaTypeNames;
-using FitPro.Controller;
 
 namespace FitPro.Views
 {
-    /// <summary>
-    /// Lógica interna para TesteClasses.xaml
-    /// </summary>
     public partial class TesteClasses : Window
     {
+
         private Aluno aluno;
         private Ficha ficha;
 

@@ -13,7 +13,7 @@
 
                 <TextBlock Text="Nome" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,50,0,0"/>
                 <TextBox x:Name="campoNome" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,70,0,0"/>
-                
+
                 <TextBlock Text="Telefone" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,100,0,0"/>
                 <TextBox x:Name="campoTelefone" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,120,0,0"/>
 
@@ -35,7 +35,7 @@
                 <Button x:Name="bLimparAluno" Content="Limpar" Height="20" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,400,0,0" Click="bLimparAluno_Click" />
                 <Button x:Name="bExcluirAluno" Content="Excluir" Height="20" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,430,0,0" Click="bExcluirAluno_Click"/>
             </Grid>
-            
+
             <Grid Width="140">
                 <TextBlock Text="ID" x:Name="idFicha" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="60,20,0,0"/>
 
@@ -54,7 +54,7 @@
 
                 <TextBlock Text="Braço Direito" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="35,280,0,0"/>
                 <TextBox x:Name="campoBracoR" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,300,0,0"/>
-                
+
                 <TextBlock Text="Braço Esquerdo" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="30,330,0,0"/>
                 <TextBox x:Name="campoBracoL" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,350,0,0"/>
 
@@ -73,6 +73,6 @@
 
                 <Button x:Name="bExcluirFicha" Content="Excluir" Height="20" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,630,0,0" Click="bExcluirFicha_Click"/>
             </Grid>
-        </StackPanel>        
+        </StackPanel>
     </Grid>
 </Window>

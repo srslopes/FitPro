@@ -27,10 +27,10 @@ namespace FitPro
 
         private void BtnEntrar_Click(object sender, RoutedEventArgs e)
         {
-            //Login login = new Login();
-            //login.Show();
-            TesteClasses tc = new TesteClasses();
-            tc.Show();
+            Login login = new Login();
+            login.Show();
+            //TesteClasses tc = new TesteClasses();
+            //tc.Show();
         }
 
         private void CreateTablesSQL()
