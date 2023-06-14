@@ -25,7 +25,7 @@ namespace FitPro.Controller
             {
                 if (int.Parse(fichas[i]["ID"].ToString()) == ID) break;
             }
-            //if (i == fichas.Count) return null;
+            if (i == fichas.Count) return null;
             Ficha ficha = new Ficha();
             ficha.setId(int.Parse(fichas[i]["ID"].ToString()));
             ficha.setData(DateTime.Parse(fichas[i]["data"].ToString()));
@@ -85,6 +85,31 @@ namespace FitPro.Controller
                 ControleAluno.salvar(aluno);
             }
             ficha.clear();
+        }
+
+        public static List<Ficha> Listar()
+        {
+            List<Ficha> lista = new List<Ficha>();
+            Query SQL = new Query();
+            List<Dictionary<string, object>> fichas = SQL.Read("ficha");
+            for (int i = 0; i < fichas.Count; i++)
+            {
+                Ficha ficha = new Ficha();
+                ficha.setId(int.Parse(fichas[i]["ID"].ToString()));
+                ficha.setData(DateTime.Parse(fichas[i]["data"].ToString()));
+                ficha.setIdAluno(int.Parse(fichas[i]["ID_aluno"].ToString()));
+                ficha.setPeso(float.Parse(fichas[i]["peso"].ToString()));
+                ficha.setPeito(float.Parse(fichas[i]["medida_peito"].ToString()));
+                ficha.setCintura(float.Parse(fichas[i]["medida_barriga"].ToString()));
+                ficha.setBracoL(float.Parse(fichas[i]["medida_braco_esquerdo"].ToString()));
+                ficha.setBracoR(float.Parse(fichas[i]["medida_braco_direito"].ToString()));
+                ficha.setPernaL(float.Parse(fichas[i]["medida_perna_esquerda"].ToString()));
+                ficha.setPernaR(float.Parse(fichas[i]["medida_perna_direita"].ToString()));
+                ficha.setComentarios(fichas[i]["comentarios"].ToString());
+                lista.Add(ficha);
+            }
+            SQL = null;
+            return lista;
         }
     }
 }
