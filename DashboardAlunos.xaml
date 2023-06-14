@@ -1,0 +1,23 @@
+﻿<Window x:Class="FitPro.DashboardAlunos"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FitPro"
+        mc:Ignorable="d"
+        Height="720" Width="1280" WindowStartupLocation="CenterScreen" Background="Transparent"
+        AllowsTransparency="True" WindowStyle="None">
+    <Grid>
+        <Border Background="#E7E7E7" CornerRadius="25"></Border>
+        <Border Background="#2f6a87" Height="65" VerticalAlignment="Top" CornerRadius="25 25 0 0">
+            <Grid>
+                <Label Content="FITPRO" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,0,0,0" FontSize="24" Foreground="White" FontWeight="SemiBold" FontFamily="Poppins" />
+                <Button x:Name="BtnSair" Content="SAIR" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,30,0" FontSize="14" Foreground="White" FontWeight="SemiBold" FontFamily="Poppins" Background="Transparent" BorderBrush="Transparent"/>
+            </Grid>
+        </Border>
+        <WrapPanel x:Name="DashboardContent" VerticalAlignment="Center" HorizontalAlignment="Center" Height="590" Width="1280">
+            <DataGrid x:Name="UsuariosGrid" Height="580" Width="1270" AutoGenerateColumns="False" />
+        </WrapPanel>
+        <Border Background="#2f6a87" Height="65" VerticalAlignment="Bottom" CornerRadius="0 0 25 25"></Border>
+    </Grid>
+</Window>
