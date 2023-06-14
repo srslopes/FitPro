@@ -79,5 +79,24 @@ namespace FitPro.Controller
             }
             aluno.clear();
         }
+        public static List<Aluno> Listar()
+        {            
+            List<Aluno> lista = new List<Aluno>();
+            Query SQL = new Query();
+            List<Dictionary<string, object>> alunos = SQL.Read("aluno");
+            for (int i = 0; i < alunos.Count; i++)
+            {
+                Aluno aluno = new Aluno();
+                aluno.setId(int.Parse(alunos[i]["ID"].ToString()));
+                aluno.setNome(alunos[i]["nome"].ToString());
+                aluno.setTelefone(int.Parse(alunos[i]["telefone"].ToString()));
+                aluno.setNascimento(DateTime.Parse(alunos[i]["data_nascimento"].ToString()));
+                aluno.setAltura(float.Parse(alunos[i]["altura"].ToString()));
+                aluno.setFichas(aluno.string2list(alunos[i]["IDs_fichas"].ToString()));
+                aluno.getFichas().Sort();
+                lista.Add(aluno);
+            }
+            return lista;
+        }
     }
 }
