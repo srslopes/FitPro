@@ -23,16 +23,18 @@ namespace FitPro
         private string comentarios;
         private Query SQL;
 
+        public Ficha(Aluno aluno)
+        {
+            clear();
+            idAluno = aluno.getId();
+        }
+
         public Ficha()
         {
             clear();
         }
-        public Ficha(int ID)
-        {
-            carregar(ID);
-        }
 
-        private void clear()
+        public void clear()
         {
             id = -1;
             data = DateTime.Today;
@@ -47,13 +49,13 @@ namespace FitPro
             comentarios = "";
             SQL = new Query();
         }
-
+        /*
         private void carregar(int ID)
         {
             List<Dictionary<string, object>> dados = SQL.ReadWhere("ficha", $"ID={ID}");
             id = int.Parse(dados.FirstOrDefault()["ID"].ToString());
             data = DateTime.Parse(dados.FirstOrDefault()["data"].ToString());
-            idAluno = int.Parse(dados.FirstOrDefault()["id_aluno"].ToString());
+            idAluno = int.Parse(dados.FirstOrDefault()["ID_aluno"].ToString());
             peso = float.Parse(dados.FirstOrDefault()["peso"].ToString());
             peito = float.Parse(dados.FirstOrDefault()["medida_peito"].ToString());
             cintura = float.Parse(dados.FirstOrDefault()["medida_barriga"].ToString());
@@ -100,7 +102,7 @@ namespace FitPro
                 SQL.Update("ficha", dados, $"ID={id}");
             }
         }
-        public void delete()
+        public void deletar()
         {
             if(id!=-1) SQL.Delete("ficha", $"ID={id}");
             if (idAluno != -1)
@@ -117,8 +119,8 @@ namespace FitPro
             if (id != -1) SQL.Delete("ficha", $"ID={id}");            
             clear();
         }
-
-        private int ultimoId()
+        */
+        public int ultimoId()
         {
             int maior = 0;
             List<Dictionary<string, object>> fichas = SQL.Read("ficha");
@@ -129,9 +131,29 @@ namespace FitPro
             return maior;
         }
 
+        public void setId(int ID)
+        {
+            id = ID;
+        }
+
         public int getId()
         {
             return id;
+        }
+
+        public void setIdAluno(int ID)
+        {
+            idAluno = ID;
+        }
+
+        public int getIdAluno()
+        {
+            return idAluno;
+        }
+
+        public void setData(DateTime Data)
+        {
+            data = Data;
         }
 
         public DateTime getData()

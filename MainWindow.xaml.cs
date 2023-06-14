@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FitPro.Views;
 
 namespace FitPro
 {
@@ -26,8 +27,10 @@ namespace FitPro
 
         private void BtnEntrar_Click(object sender, RoutedEventArgs e)
         {
-            Login login = new Login();
-            login.Show();
+            //Login login = new Login();
+            //login.Show();
+            TesteClasses tc = new TesteClasses();
+            tc.Show();
         }
 
         private void CreateTablesSQL()

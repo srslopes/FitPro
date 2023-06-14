@@ -83,7 +83,7 @@ namespace FitPro.Database
                         CREATE TABLE IF NOT EXISTS ficha (
                         ID INT NOT NULL AUTO_INCREMENT,
                         ID_aluno INT,
-                        data DATE,
+                        data VARCHAR(255) NOT NULL,
                         peso FLOAT,
                         medida_barriga FLOAT,
                         medida_peito FLOAT,
@@ -113,9 +113,8 @@ namespace FitPro.Database
                         ID INT NOT NULL AUTO_INCREMENT,
                         nome VARCHAR(255) NOT NULL,
                         telefone INT,
-                        data_nascimento DATE,
+                        data_nascimento VARCHAR(255) NOT NULL,
                         altura FLOAT,
-                        ID_ultima_ficha INT,
                         IDs_fichas VARCHAR(100),
                         PRIMARY KEY (ID)
                                 );";
