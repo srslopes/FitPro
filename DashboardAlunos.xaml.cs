@@ -1,6 +1,7 @@
 ﻿using FitPro.Controller;
 using FitPro.Database;
 using FitPro.Model;
+using FitPro.Views;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -11,15 +12,37 @@ namespace FitPro
 {
     public partial class DashboardAlunos : Window
     {
-
-        private Query query;
-
         public DashboardAlunos()
         {
             InitializeComponent();
-            query = new Query();
+            CarregarAlunos();
+        }
+
+        private void CarregarAlunos()
+        {
+            ListaAlunos.Items.Clear();
             List<Aluno> alunos = ControleAluno.Listar();
-            UsuariosGrid.ItemsSource = alunos;
+
+            // Carrega todos os alunos na Listbox 'ListaAlunos'
+            foreach (Aluno aluno in alunos)
+            {
+                ListaAlunos.Items.Add(aluno.getNome());
+            }
+        }
+
+        private void ListaAlunos_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if(ListaAlunos.SelectedItem != null)
+            {
+                string nome = ListaAlunos.SelectedItem.ToString();
+                CarregarFicha ficha = new CarregarFicha(nome);
+                ficha.Show();
+            }
+        }
+
+        private void BtnSair_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
         }
     }
 }

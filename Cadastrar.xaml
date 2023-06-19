@@ -45,5 +45,6 @@
             </Button.Style>
         </Button>
         <Label Content="Nome" Foreground="White" FontSize="16" FontWeight="Normal" FontFamily="Poppins" HorizontalAlignment="Left" Margin="95,150,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LabelSucesso" Content="Usuário cadastrado com sucesso!" FontSize="16" FontWeight="Bold" Foreground="ForestGreen" HorizontalAlignment="Center" Margin="0,72,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

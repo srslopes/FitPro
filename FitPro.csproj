@@ -98,6 +98,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CarregarFicha.xaml.cs">
+      <DependentUpon>CarregarFicha.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controller\ControleAluno.cs" />
     <Compile Include="Controller\ControleFicha.cs" />
     <Compile Include="Views\TelaAluno.xaml.cs">
@@ -107,6 +110,10 @@
       <DependentUpon>TesteClasses.xaml</DependentUpon>
     </Compile>
     <Page Include="Cadastrar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CarregarFicha.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

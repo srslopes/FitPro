@@ -45,5 +45,10 @@ namespace FitPro
                 Console.WriteLine("Erro ao estabelecer a conexão: " + ex.Message);
             }
         }
+
+        private void BtnSair_Click(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }
 }

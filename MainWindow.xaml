@@ -12,8 +12,8 @@
         <Border Background="#2f6a87" Height="65" VerticalAlignment="Top" CornerRadius="25 25 0 0">
             <Grid>
                 <Label Content="FITPRO" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,0,0,0" FontSize="24" Foreground="White" FontWeight="SemiBold" FontFamily="Poppins" />
-                <Button x:Name="BtnEntrar" Content="ENTRAR" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,30,0" FontSize="14" Foreground="White" FontWeight="SemiBold" FontFamily="Poppins" Background="Transparent" BorderBrush="Transparent" Click="BtnEntrar_Click"/>
-                <Button x:Name="BtnAlunos" Content="ALUNOS" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,100,0" FontSize="14" Foreground="White" FontWeight="SemiBold" FontFamily="Poppins" Background="Transparent" BorderBrush="Transparent"/>
+                <Button x:Name="BtnEntrar" Content="ENTRAR" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,75,0" FontSize="14" Foreground="White" FontWeight="SemiBold" FontFamily="Poppins" Background="Transparent" BorderBrush="Transparent" Click="BtnEntrar_Click"/>
+                <Button x:Name="BtnSair" Content="SAIR" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,30,0" FontSize="14" Foreground="White" FontWeight="SemiBold" FontFamily="Poppins" Background="Transparent" BorderBrush="Transparent" Click="BtnSair_Click"/>
             </Grid>
         </Border>
         <WrapPanel x:Name="DashboardContent" VerticalAlignment="Center" HorizontalAlignment="Left"></WrapPanel>

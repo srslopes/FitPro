@@ -54,3 +54,5 @@ C:\Users\vbasi\OneDrive\Área de Trabalho\FitPro\obj\Debug\FichaAluno.baml
 C:\Users\vbasi\OneDrive\Área de Trabalho\FitPro\obj\Debug\Views\TelaAluno.baml
 C:\Users\vbasi\OneDrive\Área de Trabalho\FitPro\obj\Debug\Views\TesteClasses.g.cs
 C:\Users\vbasi\OneDrive\Área de Trabalho\FitPro\obj\Debug\Views\TesteClasses.baml
+C:\Users\vbasi\OneDrive\Área de Trabalho\FitPro\obj\Debug\CarregarFicha.g.cs
+C:\Users\vbasi\OneDrive\Área de Trabalho\FitPro\obj\Debug\CarregarFicha.baml

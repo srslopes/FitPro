@@ -7,17 +7,16 @@ using System.Text;
 using System.Threading.Tasks;
 using MySqlX.XDevAPI;
 using FitPro;
+using BCrypt.Net;
 
 namespace FitPro.Controller
 {
     class ControleAluno
     {
 
-        public ControleAluno()
-        {
+        public ControleAluno(){}
 
-        }
-
+        // Método para carregar uma aluno específico do banco de dados
         public static Aluno carregar(int ID)
         {
             Query SQL = new Query();
@@ -40,6 +39,7 @@ namespace FitPro.Controller
             return aluno;
         }
 
+        // Método para salvar um aluno no banco de dados
         public static void salvar(Aluno aluno)
         {
             Query SQL = new Query();
@@ -64,6 +64,7 @@ namespace FitPro.Controller
             }
         }
 
+        // Método para deletar um aluno do banco de dados
         public static void deletar(Aluno aluno)
         {
             Query SQL = new Query();
@@ -79,6 +80,8 @@ namespace FitPro.Controller
             }
             aluno.clear();
         }
+
+        // Método para listar todos os alunos do banco de dados
         public static List<Aluno> Listar()
         {            
             List<Aluno> lista = new List<Aluno>();
@@ -97,6 +100,23 @@ namespace FitPro.Controller
                 lista.Add(aluno);
             }
             return lista;
+        }
+
+        // Método para verificar a autenticação do usuário na hora do LOGIN
+        // Caso o usuário for encontrado, retorna a senha descriptografada usando o BCrypt.Verify
+        public bool Autenticar(string email, string senha)
+        {
+            Query query = new Query();
+            List<Dictionary<string, object>> alunos = query.Read("usuario");
+            Dictionary<string, object> alunoEncontrado = alunos.FirstOrDefault(u => u["email"].ToString() == email);
+
+            if(alunoEncontrado != null)
+            {
+                string senhaHash = alunoEncontrado["senha"].ToString();
+                return BCrypt.Net.BCrypt.Verify(senha, senhaHash);
+            }
+
+            return false;
         }
     }
 }

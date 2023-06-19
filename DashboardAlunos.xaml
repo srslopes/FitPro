@@ -7,21 +7,17 @@
         mc:Ignorable="d"
         Height="720" Width="1280" WindowStartupLocation="CenterScreen" Background="Transparent"
         AllowsTransparency="True" WindowStyle="None">
+
     <Grid>
         <Border Background="#E7E7E7" CornerRadius="25"></Border>
         <Border Background="#2f6a87" Height="65" VerticalAlignment="Top" CornerRadius="25 25 0 0">
             <Grid>
                 <Label Content="FITPRO" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,0,0,0" FontSize="24" Foreground="White" FontWeight="SemiBold" FontFamily="Poppins" />
-                <Button x:Name="BtnSair" Content="SAIR" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,30,0" FontSize="14" Foreground="White" FontWeight="SemiBold" FontFamily="Poppins" Background="Transparent" BorderBrush="Transparent"/>
+                <Button x:Name="BtnSair" Content="SAIR" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,30,0" FontSize="14" Foreground="White" FontWeight="SemiBold" FontFamily="Poppins" Background="Transparent" BorderBrush="Transparent" Click="BtnSair_Click"/>
             </Grid>
         </Border>
         <WrapPanel x:Name="DashboardContent" VerticalAlignment="Center" HorizontalAlignment="Center" Height="590" Width="1280">
-            <DataGrid x:Name="UsuariosGrid" Height="580" Width="1270" AutoGenerateColumns="False">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Nome" Binding="{Binding Nome}" />
-                    <DataGridTextColumn Header="Idade" Binding="{Binding Idade}" />
-                </DataGrid.Columns>
-            </DataGrid>
+            <ListBox x:Name="ListaAlunos" Height="590" Width="1280" MouseDoubleClick="ListaAlunos_MouseDoubleClick" />
         </WrapPanel>
         <Border Background="#2f6a87" Height="65" VerticalAlignment="Bottom" CornerRadius="0 0 25 25"></Border>
     </Grid>

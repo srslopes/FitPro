@@ -1,5 +1,4 @@
-﻿using FitPro.Controller;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,26 +14,17 @@ using System.Windows.Shapes;
 
 namespace FitPro
 {
-    public partial class Cadastrar : Window
+    public partial class CarregarFicha : Window
     {
-        private UsuarioController usuario;
-
-        public Cadastrar()
+        public CarregarFicha(string nome)
         {
             InitializeComponent();
-            usuario = new UsuarioController();
-            LabelSucesso.Visibility = Visibility.Collapsed;
+            CampoNome.Text = nome;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            usuario.CadastrarUsuario(CampoNome.Text, CampoEmail.Text, CampoSenha.Password);
-            LabelSucesso.Visibility = Visibility.Visible;
         }
     }
 }
