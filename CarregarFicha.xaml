@@ -8,21 +8,22 @@
         Background="#2f6a87" Height="800" Width="477" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Grid>
         <Label Content="Ficha" FontFamily="Poppins" FontWeight="Bold" FontSize="22" Foreground="White" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Center" Margin="0,161,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" Height="24"/>
+        <TextBox x:Name="tbPeso" HorizontalAlignment="Center" Margin="0,161,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" Height="24" IsEnabled="False"/>
         <Label Content="Peso" Foreground="White" FontSize="16" FontWeight="Bold" FontFamily="Poppins" HorizontalAlignment="Left" Margin="130,127,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Center" Margin="0,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="24"/>
+        <TextBox x:Name="tbBarriga" HorizontalAlignment="Center" Margin="0,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="24" IsEnabled="False"/>
         <Label Content="Medida da Barriga" Foreground="White" FontSize="16" FontWeight="Bold" FontFamily="Poppins" HorizontalAlignment="Left" Margin="130,201,0,0" VerticalAlignment="Top"/>
         <Label Content="Medida do Peito" Foreground="White" FontSize="16" FontWeight="Bold" FontFamily="Poppins" HorizontalAlignment="Left" Margin="130,278,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Center" Margin="0,317,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="24"/>
+        <TextBox x:Name="tbPeito" HorizontalAlignment="Center" Margin="0,317,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="24" IsEnabled="False"/>
         <Label Content="Medida do braço direito" Foreground="White" FontSize="16" FontWeight="Bold" FontFamily="Poppins" HorizontalAlignment="Left" Margin="134,350,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="24" Margin="0,384,0,0"/>
+        <TextBox x:Name="tbBracoR" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="24" Margin="0,384,0,0" IsEnabled="False"/>
         <Label Content="Medida do braço esquerdo" Foreground="White" FontSize="16" FontWeight="Bold" FontFamily="Poppins" HorizontalAlignment="Left" Margin="130,422,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Center" Margin="0,461,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="24"/>
+        <TextBox x:Name="tbBracoL" HorizontalAlignment="Center" Margin="0,461,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="24" IsEnabled="False"/>
         <Label Content="Medida da perna direita" Foreground="White" FontSize="16" FontWeight="Bold" FontFamily="Poppins" HorizontalAlignment="Left" Margin="130,497,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Center" Margin="0,536,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="24"/>
+        <TextBox x:Name="tbPernaR" HorizontalAlignment="Center" Margin="0,536,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="24" IsEnabled="False"/>
         <Label Content="Medida da perna esquerda" Foreground="White" FontSize="16" FontWeight="Bold" FontFamily="Poppins" HorizontalAlignment="Left" Margin="130,574,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Center" Margin="0,608,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="23"/>
+        <TextBox x:Name="tbPernaL" HorizontalAlignment="Center" Margin="0,608,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="23" IsEnabled="False"/>
         <Button Content="Fechar" HorizontalAlignment="Center" Margin="0,656,0,0" VerticalAlignment="Top" Height="26" Width="200" Click="Button_Click"/>
-        <TextBlock x:Name="CampoNome" HorizontalAlignment="Left" Margin="205,85,0,0" TextWrapping="Wrap" Text="TextBlock" Foreground="White" FontSize="16" FontWeight="SemiBold" FontFamily="Poppins" VerticalAlignment="Top" Height="29" Width="82"/>
+        <TextBlock x:Name="CampoNome" HorizontalAlignment="Left" Margin="205,85,0,0" TextWrapping="Wrap" Text="Nome" Foreground="White" FontSize="16" FontWeight="SemiBold" FontFamily="Poppins" VerticalAlignment="Top" Height="29" Width="82"/>
+        <TextBlock x:Name="CampoData" HorizontalAlignment="Left" Margin="205, 105,0,0" TextWrapping="Wrap" Text="Data" Foreground="White" FontSize="14" FontWeight="SemiBold" FontFamily="Poppins" VerticalAlignment="Top" Height="29" Width="82"/>
     </Grid>
 </Window>

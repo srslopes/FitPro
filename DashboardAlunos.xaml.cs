@@ -4,6 +4,7 @@ using FitPro.Model;
 using FitPro.Views;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -12,6 +13,7 @@ namespace FitPro
 {
     public partial class DashboardAlunos : Window
     {
+        private List<Aluno> alunos;
         public DashboardAlunos()
         {
             InitializeComponent();
@@ -21,7 +23,7 @@ namespace FitPro
         private void CarregarAlunos()
         {
             ListaAlunos.Items.Clear();
-            List<Aluno> alunos = ControleAluno.Listar();
+            alunos = ControleAluno.Listar();
 
             // Carrega todos os alunos na Listbox 'ListaAlunos'
             foreach (Aluno aluno in alunos)
@@ -35,7 +37,7 @@ namespace FitPro
             if(ListaAlunos.SelectedItem != null)
             {
                 string nome = ListaAlunos.SelectedItem.ToString();
-                CarregarFicha ficha = new CarregarFicha(nome);
+                CarregarFicha ficha = new CarregarFicha(alunos[ListaAlunos.SelectedIndex].getFichas().Last(), nome);
                 ficha.Show();
             }
         }

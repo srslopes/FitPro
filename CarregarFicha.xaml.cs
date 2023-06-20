@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FitPro.Controller;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,10 +17,27 @@ namespace FitPro
 {
     public partial class CarregarFicha : Window
     {
-        public CarregarFicha(string nome)
+        private Ficha ficha;
+        private string nome;
+        public CarregarFicha(int id, string Nome)
         {
             InitializeComponent();
+            ficha = ControleFicha.carregar(id);
+            nome = Nome;
+            CarregarDados();
+        }
+
+        private void CarregarDados()
+        {
             CampoNome.Text = nome;
+            CampoData.Text = ficha.getData().ToString();
+            tbPeso.Text = ficha.getPeso() +"kg";
+            tbBarriga.Text = ficha.getCintura() + "cm";
+            tbPeito.Text = ficha.getPeito() + "cm";
+            tbBracoR.Text = ficha.getBracoR() + "cm";
+            tbBracoL.Text = ficha.getBracoL() + "cm";
+            tbPernaR.Text = ficha.getPernaR() + "cm";
+            tbPernaL.Text = ficha.getPernaL() + "cm";
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
